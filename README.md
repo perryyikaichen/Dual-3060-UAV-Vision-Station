@@ -5,9 +5,9 @@
 This project builds an autonomous UAV capability to land fixed-wing aircraft using computer vision (YOLO) and simulation (ArduPilot SITL). The system is designed to run on a dual-GPU workstation (2x RTX 3060), separating the "Brain" (Vision Processing) from the "World" (Simulation/Rendering).
 
 ### 🛠️ Tech Stack
-*   **Simulation**: ArduPilot SITL + Gazebo (Dockerized)
+*   **Simulation**: ArduPilot SITL + Gazebo Garden (Dockerized)
 *   **Vision**: YOLOv8 (Ultralytics)
-*   **Control**: MAVLink (Python Bridge)
+*   **Control**: MAVLink (pymavlink Bridge)
 *   **Hardware Target**: Jetson Nano (Airborne), Dual RTX 3060 (Ground Station)
 *   **Airframe**: Custom LW-PLA Design (Ender 3 Pro)
 
@@ -18,24 +18,37 @@ This project builds an autonomous UAV capability to land fixed-wing aircraft usi
 *   Docker + NVIDIA Container Runtime
 *   Python 3.10+
 
-### 2. Run the Simulation
-We use a Docker container to run the physics engine without polluting the host OS.
+### 2. Run the 3D Simulation
+We use a Docker container to run ArduPilot and Gazebo in a unified graphic environment.
+
 ```bash
 # Build the simulator
 docker build -t ardupilot-sitl:latest ./docker_sitl
 
 # Run the simulation (detached)
-docker run -rm -d --name ardupilot-sim -p 14550:14550 -p 14551:14551 ardupilot-sitl:latest
+# The container will auto-launch Gazebo and ArduPlane
+docker run --rm -d \
+    --name ardupilot-sim \
+    --net=host \
+    --env DISPLAY=$DISPLAY \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    --volume $(pwd):/home/ardupilot/project \
+    ardupilot-sitl:latest
 ```
 
-### 3. Connect the Vision Bridge
-Start the Python bridge to talk to the flight controller.
+### 3. Flight Automation
+We have developed scripts to bypass simulation quirks (ground friction) and automate testing.
+
 ```bash
-python3 moose_vision/sitl_bridge.py
+# "The Gravity Glider" (Air Spawn + Blind Launch)
+# 1. Spawns plane at 150m
+# 2. Ignites throttle immediately
+docker cp blind_flight.py ardupilot-sim:/home/ardupilot/
+docker exec ardupilot-sim python3 /home/ardupilot/blind_flight.py
 ```
 
-### 4. Visualizer
-Launch QGroundControl (via the wrapper script to fix library dependencies):
+### 4. Connect Visualizer
+Launch QGroundControl on the host machine to monitor telemetry.
 ```bash
 bash run_qgc.sh
 ```
@@ -44,9 +57,10 @@ bash run_qgc.sh
 *   `docker_sitl/`: Dockerfile and scripts for the ArduPilot environment.
 *   `moose_vision/`: Python code for YOLO and MAVLink control.
 *   `daily_logs/`: Engineering logs tracking the development journey.
-*   `assets/`: Screenshots and media.
+*   `*_flight.py`: Various test scripts for automated maneuvers.
 
-## 📝 Latest Status (Day 1)
-*   ✅ **Simulation**: Active (Dockerized ArduPlane).
-*   ✅ **Bridge**: Connected (Heartbeat confirmed).
-*   🚧 **Vision**: Setting up Gazebo for 3D camera data.
+## 📝 Latest Status (Day 2)
+*   ✅ **Simulation**: Active (ArduPlane + Gazebo Garden).
+*   ✅ **Protocol**: Fixed `JSON` backend for Gazebo communication.
+*   ✅ **Automation**: "Blind Launch" scripts operational.
+*   🚧 **Vision**: Camera sensor verification pending.
