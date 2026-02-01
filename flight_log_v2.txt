@@ -1,0 +1,38 @@
+Connecting to tcp:127.0.0.1:5762...
+Connected. System 1
+Arming...
+>> ARMED <<
+Mode: FBWA
+Applying MAX Power + Pitch INVERSE (1100)...
+--- TELEMETRY LOG V2 ---
+Time | ThrOut | Speed | Alt | Pitch | S1 | S2
+ATT | Pitch:-17.6
+HUD | Thr:100% | Spd:5.2 | Alt:584.26
+SRV | S1:1600 | S2:1548
+ATT | Pitch:-17.7
+HUD | Thr:100% | Spd:9.0 | Alt:584.28
+SRV | S1:1583 | S2:1551
+ATT | Pitch:-17.7
+HUD | Thr:100% | Spd:9.1 | Alt:584.31
+SRV | S1:1597 | S2:1568
+ATT | Pitch:-17.7
+HUD | Thr:0% | Spd:3.4 | Alt:584.32
+SRV | S1:1423 | S2:1480
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.32
+SRV | S1:1232 | S2:1473
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.30
+SRV | S1:1229 | S2:1475
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.27
+SRV | S1:1230 | S2:1474
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.25
+SRV | S1:1229 | S2:1474
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.22
+SRV | S1:1230 | S2:1474
+ATT | Pitch:-17.2
+HUD | Thr:0% | Spd:0.0 | Alt:584.22
+Test Complete

@@ -1,0 +1,38 @@
+Connecting to tcp:127.0.0.1:5762...
+Connected. System 1
+Arming...
+>> ARMED <<
+Mode: FBWA
+Applying MAX Power + Pitch Up...
+--- TELEMETRY LOG ---
+Time | ThrOut | Speed | Alt | Pitch
+ATT | Pitch:-17.6
+HUD | Thr:100% | Spd:7.5 | Alt:584.24
+PWM | Ch3:1900
+ATT | Pitch:-17.6
+HUD | Thr:100% | Spd:7.7 | Alt:584.27
+PWM | Ch3:1900
+ATT | Pitch:-17.7
+HUD | Thr:100% | Spd:7.7 | Alt:584.33
+PWM | Ch3:1900
+ATT | Pitch:-17.3
+HUD | Thr:0% | Spd:0.0 | Alt:584.34
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.34
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.32
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.30
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.28
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.29
+PWM | Ch3:1100
+ATT | Pitch:-17.1
+HUD | Thr:0% | Spd:0.0 | Alt:584.30
+Test Complete
